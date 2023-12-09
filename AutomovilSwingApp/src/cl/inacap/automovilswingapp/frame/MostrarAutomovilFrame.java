@@ -22,25 +22,25 @@ public class MostrarAutomovilFrame extends JInternalFrame { //Esta clase hereda 
 	private JButton btnFiltrar;
 	
 
-	//Proceso de creaci�n del frame.
+	//Proceso de creación del frame.
 	public MostrarAutomovilFrame() {
 		setTitle("Mostrar Automoviles"); //Es es el titulo del frame, se muestra al lado del icono cuando se ejecuta el programa. 
-		//Todo este c�digo se ejecuta antes de que se abra el JInternalFrame (Momento ideal para cargar el JComboBox).
+		//Todo este código se ejecuta antes de que se abra el JInternalFrame (Momento ideal para cargar el JComboBox).
 		addInternalFrameListener(new InternalFrameAdapter() {
 			@Override
 			public void internalFrameOpened(InternalFrameEvent arg0) {
 				AutomovilDAO daoAutomovil = new AutomovilDAO();
 				List<Automovil> automovilesIngresados = daoAutomovil.getAll(); //Aca se trae la lista de automoviles.
 				
-				if (automovilesIngresados.isEmpty() == true) { //Aca se revisa si hay automoviles en la lista, de no ser as� se ejecuta el c�digo.
-					JOptionPane.showMessageDialog(null, "No hay automoviles registrados en el sistema"); //El primer par�metro corresponde a la ubicac�n del mensaje y el segundo par�metro corresponde al texto del mensaje.
-					dispose(); //Esta instrucci�n cierra la ventana (JInternal Frame llamado (Eliminar Automovil)).
+				if (automovilesIngresados.isEmpty() == true) { //Aca se revisa si hay automoviles en la lista, de no ser así se ejecuta el código.
+					JOptionPane.showMessageDialog(null, "No hay automoviles registrados en el sistema"); //El primer parámetro corresponde a la ubicación del mensaje y el segundo parámetro corresponde al texto del mensaje.
+					dispose(); //Esta instrucción cierra la ventana (JInternal Frame llamado (Eliminar Automovil)).
 				}
 				
-				//Proceso de agregaci�n de items al JComboBox.
+				//Proceso de agregación de items al JComboBox.
 				comboBoxFiltrarAutomoviles.addItem("Petrolero");
 				comboBoxFiltrarAutomoviles.addItem("Bencinero");
-				comboBoxFiltrarAutomoviles.addItem("El�ctrico");
+				comboBoxFiltrarAutomoviles.addItem("Eléctrico");
 			}
 		});
 		setClosable(true);
@@ -62,7 +62,7 @@ public class MostrarAutomovilFrame extends JInternalFrame { //Esta clase hereda 
 		getContentPane().add(comboBoxFiltrarAutomoviles);
 		
 		btnFiltrar = new JButton("Filtrar");
-		btnFiltrar.addActionListener(this::filtrarAutomoviles); //Aca se a�ade el Listener del JButton llamado (Filtrar) el cual llama al m�todo llamado filtrarAutomoviles().
+		btnFiltrar.addActionListener(this::filtrarAutomoviles); //Aca se añade el Listener del JButton llamado (Filtrar) el cual llama al método llamado filtrarAutomoviles().
 		btnFiltrar.setBounds(585, 10, 89, 23);
 		getContentPane().add(btnFiltrar);
 		
@@ -75,17 +75,17 @@ public class MostrarAutomovilFrame extends JInternalFrame { //Esta clase hereda 
 		AutomovilDAO daoAutomovil = new AutomovilDAO();
 		
 			//1. Proceso de traer los estudiantes ingresados.
-			List<Automovil> automovilesFiltrados = daoAutomovil.filtrarAutomovil(seleccion); //En esta lista se almacenan todos los automoviles filtrados seg�n el valor del JcomboBox.
+			List<Automovil> automovilesFiltrados = daoAutomovil.filtrarAutomovil(seleccion); //En esta lista se almacenan todos los automoviles filtrados según el valor del JcomboBox.
 			
-			//2. Proceso de creaci�n del TableModel.
+			//2. Proceso de creación del TableModel.
 			DefaultTableModel mo = new DefaultTableModel(); //Este es el modelo donde van a ir las filas y columnas.
 			
 			//3. Proceso de llenado de columnas.
-			mo.addColumn("Patente"); //Se a�ade una columna llamada (Nombre).
-			mo.addColumn("Nombre de contacto"); //Se a�ade una columna llamada (Asignatura).
-			mo.addColumn("Tipo de atenci�n"); //Se a�ade una columna llamada (Promedio).
+			mo.addColumn("Patente"); //Se añade una columna llamada (Nombre).
+			mo.addColumn("Nombre de contacto"); //Se añade una columna llamada (Asignatura).
+			mo.addColumn("Tipo de atención"); //Se añade una columna llamada (Promedio).
 			
-			//4. Proceso de agregaci�n de filas.
+			//4. Proceso de agregación de filas.
 			for (Automovil au : automovilesFiltrados) {
 					Object[] fila = new Object[3];
 					fila[0] = au.getPatente();
@@ -102,15 +102,15 @@ public class MostrarAutomovilFrame extends JInternalFrame { //Esta clase hereda 
 		//1. Proceso de traer los estudiantes ingresados.
 		List<Automovil> automovilesIngresados = new AutomovilDAO().getAll(); //En esta lista se almacenan todos los automoviles ingresados.
 		
-		//2. Proceso de creaci�n del TableModel.
+		//2. Proceso de creación del TableModel.
 		DefaultTableModel mo = new DefaultTableModel(); //Este es el modelo donde van a ir las filas y columnas.
 		
 		//3. Proceso de llenado de columnas.
-		mo.addColumn("Patente"); //Se a�ade una columna llamada (Nombre).
-		mo.addColumn("Nombre de contacto"); //Se a�ade una columna llamada (Asignatura).
-		mo.addColumn("Tipo de atenci�n"); //Se a�ade una columna llamada (Promedio).
+		mo.addColumn("Patente"); //Se añade una columna llamada (Nombre).
+		mo.addColumn("Nombre de contacto"); //Se añade una columna llamada (Asignatura).
+		mo.addColumn("Tipo de atención"); //Se añade una columna llamada (Promedio).
 		
-		//4. Proceso de agregaci�n de filas.
+		//4. Proceso de agregación de filas.
 		for (Automovil au : automovilesIngresados) {
 			Object[] fila = new Object[3];
 			fila[0] = au.getPatente();

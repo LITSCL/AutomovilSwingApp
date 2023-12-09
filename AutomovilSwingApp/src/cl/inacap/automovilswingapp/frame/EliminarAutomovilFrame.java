@@ -20,24 +20,24 @@ public class EliminarAutomovilFrame extends JInternalFrame {
 	private JButton btnEliminar;
 	private AutomovilDAO daoAutomovil = new AutomovilDAO();
 
-	//Proceso de creaci�n del frame.
+	//Proceso de creación del frame.
 	public EliminarAutomovilFrame() {
 		setTitle("Eliminar Automovil"); //Es es el titulo del frame, se muestra al lado del icono cuando se ejecuta el programa. 
 		setClosable(true);
 		
 		addInternalFrameListener(new InternalFrameAdapter() {
 			@Override
-			//Todo este c�digo se ejecuta antes de que se abra el JInternalFrame (Momento ideal para cargar el JComboBox).
+			//Todo este código se ejecuta antes de que se abra el JInternalFrame (Momento ideal para cargar el JComboBox).
 			public void internalFrameOpened(InternalFrameEvent arg0) {
 				List<Automovil> automovilesIngresados = daoAutomovil.getAll(); //Aca se trae la lista de automoviles.
 				
-				if (automovilesIngresados.isEmpty() == true) { //Aca se revisa si hay automoviles en la lista, de no ser as� se ejecuta el c�digo.
-					JOptionPane.showMessageDialog(null, "No hay automoviles registrados en el sistema"); //El primer par�metro corresponde a la ubicac�n del mensaje y el segundo par�metro corresponde al texto del mensaje.
-					dispose(); //Esta instrucci�n cierra la ventana (JInternal Frame llamado (Eliminar Automovil)).
+				if (automovilesIngresados.isEmpty() == true) { //Aca se revisa si hay automoviles en la lista, de no ser así se ejecuta el código.
+					JOptionPane.showMessageDialog(null, "No hay automoviles registrados en el sistema"); //El primer parámetro corresponde a la ubicación del mensaje y el segundo parámetro corresponde al texto del mensaje.
+					dispose(); //Esta instrucción cierra la ventana (JInternal Frame llamado (Eliminar Automovil)).
 				}
-				else { //Si la lista tiene automoviles, entonces se ejecuta �ste c�digo.
+				else { //Si la lista tiene automoviles, entonces se ejecuta éste código.
 					for (Automovil i:automovilesIngresados) { //Aca se recorre la lista de automoviles.
-						comboBoxSeleccionarAutomovilEliminar.addItem(i); //Se a�aden los objetos de tipo Automovil que est�n almacenados en la lista al JComboBox.
+						comboBoxSeleccionarAutomovilEliminar.addItem(i); //Se añaden los objetos de tipo Automovil que están almacenados en la lista al JComboBox.
 					}
 				}
 			}
@@ -50,9 +50,9 @@ public class EliminarAutomovilFrame extends JInternalFrame {
 		comboBoxSeleccionarAutomovilEliminar.setBounds(10, 75, 664, 20);
 		getContentPane().add(comboBoxSeleccionarAutomovilEliminar);
 		
-		//Aca se crea el bot�n llamado (Eliminar).
+		//Aca se crea el botón llamado (Eliminar).
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.addActionListener(e -> eliminarAutomovil()); //Aca se a�ade el listener al bot�n, el cual llama al m�todo llamado eliminarAutomovil().
+		btnEliminar.addActionListener(e -> eliminarAutomovil()); //Aca se añade el listener al botón, el cual llama al método llamado eliminarAutomovil().
 		btnEliminar.setBounds(294, 106, 89, 23);
 		getContentPane().add(btnEliminar);
 		
@@ -64,13 +64,13 @@ public class EliminarAutomovilFrame extends JInternalFrame {
 
 	//Codigo a ejecutar cuando se pulsa el boton Eliminar.
 	private Object eliminarAutomovil() {
-		int respuesta = JOptionPane.showConfirmDialog(null, "�Seguro que desea eliminar el estudiante?","Eliminar Estudiante", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); //El primer par�metro indica el mensaje de la ventana, el segundo par�metro indica el nombre de la ventana, el tercer par�metro indica el tipo de opci�n y el cuarto par�metro indica el icono del tipo de mensaje (Esta instrucci�n retorna un dato de tipo int (0=Si/1=No)).
+		int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro que desea eliminar el estudiante?","Eliminar Estudiante", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); //El primer parámetro indica el mensaje de la ventana, el segundo parámetro indica el nombre de la ventana, el tercer parámetro indica el tipo de opción y el cuarto parámetro indica el icono del tipo de mensaje (Esta instrucción retorna un dato de tipo int (0=Si/1=No)).
 		
-		if (respuesta == JOptionPane.YES_OPTION) { //Aca se consulta si la variable respuesta es igual a 1 (En otras palabras si el usuario dio click a "YES" en el bot�n de la ventana).
-			Automovil eliminado = (Automovil)comboBoxSeleccionarAutomovilEliminar.getSelectedItem(); //la variable eliminada almacena lo que est� seleccionado en el JCombobox (Se esta haciendo down casting sinonimo de refundici�n de dato).
-			daoAutomovil.delete(eliminado); //Aca se elimina de la lista el automovil que est� seleccionado en el JCombobox.
+		if (respuesta == JOptionPane.YES_OPTION) { //Aca se consulta si la variable respuesta es igual a 1 (En otras palabras si el usuario dio click a "YES" en el botón de la ventana).
+			Automovil eliminado = (Automovil)comboBoxSeleccionarAutomovilEliminar.getSelectedItem(); //la variable eliminada almacena lo que está seleccionado en el JCombobox (Se esta haciendo down casting sinonimo de refundición de dato).
+			daoAutomovil.delete(eliminado); //Aca se elimina de la lista el automovil que está seleccionado en el JCombobox.
 			JOptionPane.showMessageDialog(null, "Automovil Eliminado"); //Aca se muestra el mensaje cuando se elimina un Automovil.
-			this.dispose(); //Esta instrucci�n cierra la ventana (JInternal Frame llamado (Eliminar Automovil)).
+			this.dispose(); //Esta instrucción cierra la ventana (JInternal Frame llamado (Eliminar Automovil)).
 		}
 		return null;
 	}
