@@ -87,11 +87,11 @@ public class MostrarAutomovilFrame extends JInternalFrame { //Esta clase hereda 
 			
 			//4. Proceso de agregación de filas.
 			for (Automovil au : automovilesFiltrados) {
-					Object[] fila = new Object[3];
-					fila[0] = au.getPatente();
-					fila[1] = au.getNombreDeContacto();
-					fila[2] = au.getTipoDeAtencion();
-					mo.addRow(fila);
+				Object[] fila = new Object[3];
+				fila[0] = au.getPatente();
+				fila[1] = au.getNombreDeContacto();
+				fila[2] = au.getTipoDeAtencion();
+				mo.addRow(fila);
 			}	
 			
 			//5. Proceso de definir en la tabla el TableModel.
