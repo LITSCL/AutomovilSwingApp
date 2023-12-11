@@ -20,7 +20,6 @@ public class MostrarAutomovilFrame extends JInternalFrame { //Esta clase hereda 
 	private JTable tableMostrarAutomovil; 
 	private JComboBox comboBoxFiltrarAutomoviles;
 	private JButton btnFiltrar;
-	
 
 	//Proceso de creación del frame.
 	public MostrarAutomovilFrame() {

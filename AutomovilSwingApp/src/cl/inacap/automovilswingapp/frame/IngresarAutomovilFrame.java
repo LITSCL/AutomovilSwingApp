@@ -136,7 +136,7 @@ public class IngresarAutomovilFrame extends JInternalFrame { //Esta clase hereda
 		if (errores.size() > 0) { //Si la lista tiene errores (no está vacia), se ejecuta el código.
 			String mensaje = ""; //Aca se crea el mensaje de errores.
 			for (int i = 0; i < errores.size(); i++) {
-				mensaje+= "\n"+errores.get(i); //En esta instrucción se concatenan todos los errores en la variable.
+				mensaje+="\n" + errores.get(i); //En esta instrucción se concatenan todos los errores en la variable.
 			}
 			JOptionPane.showMessageDialog(null, mensaje, "Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
 		}	
@@ -154,7 +154,6 @@ public class IngresarAutomovilFrame extends JInternalFrame { //Esta clase hereda
 			daoAutomovil.save(au); //Aca se añade el automovil a la lista.
 			JOptionPane.showMessageDialog(null, "Automovil ingresado"); //Esta instrucción muestra un mensaje cuando el automovil es ingresado.
 			this.dispose(); //Esta instrucción cierra la ventana (JInternal Frame llamado (Ingresar Automovil)).
-			
 		}
 	}
 }

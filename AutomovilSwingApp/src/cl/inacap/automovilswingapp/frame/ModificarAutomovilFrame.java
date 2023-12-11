@@ -76,75 +76,74 @@ public class ModificarAutomovilFrame extends JInternalFrame {
 		getContentPane().add(listAutomoviles);
 	}
 		
-		//Código a ejecutar del Listener del componente JButton llamado (Modificar).
-		private void ModificarAutomovil(ActionEvent e) {
-			List<Automovil> automovilesIngresados = new AutomovilDAO().getAll(); //En esta lista se almacenan todos los automoviles ingresados.
-			try {
-				
-				Automovil automovilSeleccionado = automovilesIngresados.get(listAutomoviles.getSelectedIndex()); //Se obtiene el objeto de la lista utilizando el indice de lo que el usuario selecciono en el JList y se almacena en una variable.
-				if (comboBoxModificar.getSelectedItem().equals("Patente")) { //Si el valor del JComboBox es igual a Patente, entonces ejecuta dicho código.
-					if (textFieldModificar.getText().equals("")) {
-						JOptionPane.showMessageDialog(null, "- No hay nada escrito en el JTextField", "Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
-					}
-					else {
-						String modificar = textFieldModificar.getText(); //Se almacena el valor del JTextField en una variable.
-						automovilSeleccionado.setPatente(modificar); //Aca se modifica su atributo.
-						daoAutomovil.update(automovilSeleccionado); //Aca se selecciona el objeto y se manda a actualizar.
-					
-					}
-					
-				}
-				else if (comboBoxModificar.getSelectedItem().equals("Nombre de contacto")) { //Si el valor del JComboBox es igual a Patente, entonces ejecuta dicho código.
-					if (textFieldModificar.getText().equals("")) {
-						JOptionPane.showMessageDialog(null, "- No hay nada escrito en el JTextField", "Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
-					}
-					else {
-						String modificar = textFieldModificar.getText(); //Se almacena el valor del JTextField en una variable.
-						automovilSeleccionado.setNombreDeContacto(modificar); //Aca se modifica su atributo.
-						daoAutomovil.update(automovilSeleccionado); //Aca se selecciona el objeto y se manda a actualizar.
-					}
-					
-				}
-				else if (comboBoxModificar.getSelectedItem().equals("Kilometraje")) { //Si el valor del JComboBox es igual a Patente, entonces ejecuta dicho código.
-					if (textFieldModificar.getText().equals("")) {
-						JOptionPane.showMessageDialog(null, "- No hay nada escrito en el JTextField", "Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
-					}
-					else {
-						try {
-							int modificar = Integer.parseInt(textFieldModificar.getText()); //Se almacena el valor del JTextField en una variable (Se hace una refundición de dato).
-							if (modificar > 30) {
-								automovilSeleccionado.setKilometraje(modificar); //Aca se modifica su atributo.
-								daoAutomovil.update(automovilSeleccionado); //Aca se selecciona el objeto y se manda a actualizar.
-							}
-							else {
-								JOptionPane.showMessageDialog(null, "- El kilometraje es 30 o menor","Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
-							}
-							
-						} catch (Exception ex) {
-							JOptionPane.showMessageDialog(null, "- Ingresó un valor no valido","Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
-						}
-						
-					}
-					
-				}
-				
-				//Proceso de refrescado del JList.
-				DefaultListModel listAutomovilesSeleccionar = new DefaultListModel(); //Se crea un objeto de tipo DefaultListModel.
-				
-				for (int i = 0; i < automovilesIngresados.size(); i++) { //Aca se recorre la lista de automoviles.
-					listAutomovilesSeleccionar.addElement(automovilesIngresados.get(i).toString()); //Aca se añaden los automoviles al JList.
-				}
-				listAutomoviles.setModel(listAutomovilesSeleccionar); //Aca se añaden todos los textos al componente JList.
+	//Código a ejecutar del Listener del componente JButton llamado (Modificar).
+	private void ModificarAutomovil(ActionEvent e) {
+		List<Automovil> automovilesIngresados = new AutomovilDAO().getAll(); //En esta lista se almacenan todos los automoviles ingresados.
+		try {
 			
-			} catch (Exception ex) {
+			Automovil automovilSeleccionado = automovilesIngresados.get(listAutomoviles.getSelectedIndex()); //Se obtiene el objeto de la lista utilizando el indice de lo que el usuario selecciono en el JList y se almacena en una variable.
+			if (comboBoxModificar.getSelectedItem().equals("Patente")) { //Si el valor del JComboBox es igual a Patente, entonces ejecuta dicho código.
 				if (textFieldModificar.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "- No hay nada escrito en el JTextField \n- No seleccionó ningún automóvil ", "Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
+					JOptionPane.showMessageDialog(null, "- No hay nada escrito en el JTextField", "Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "- No seleccionó ningún automóvil", "Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
+					String modificar = textFieldModificar.getText(); //Se almacena el valor del JTextField en una variable.
+					automovilSeleccionado.setPatente(modificar); //Aca se modifica su atributo.
+					daoAutomovil.update(automovilSeleccionado); //Aca se selecciona el objeto y se manda a actualizar.
+				
 				}
+				
+			}
+			else if (comboBoxModificar.getSelectedItem().equals("Nombre de contacto")) { //Si el valor del JComboBox es igual a Patente, entonces ejecuta dicho código.
+				if (textFieldModificar.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "- No hay nada escrito en el JTextField", "Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
+				}
+				else {
+					String modificar = textFieldModificar.getText(); //Se almacena el valor del JTextField en una variable.
+					automovilSeleccionado.setNombreDeContacto(modificar); //Aca se modifica su atributo.
+					daoAutomovil.update(automovilSeleccionado); //Aca se selecciona el objeto y se manda a actualizar.
+				}
+				
+			}
+			else if (comboBoxModificar.getSelectedItem().equals("Kilometraje")) { //Si el valor del JComboBox es igual a Patente, entonces ejecuta dicho código.
+				if (textFieldModificar.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "- No hay nada escrito en el JTextField", "Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
+				}
+				else {
+					try {
+						int modificar = Integer.parseInt(textFieldModificar.getText()); //Se almacena el valor del JTextField en una variable (Se hace una refundición de dato).
+						if (modificar > 30) {
+							automovilSeleccionado.setKilometraje(modificar); //Aca se modifica su atributo.
+							daoAutomovil.update(automovilSeleccionado); //Aca se selecciona el objeto y se manda a actualizar.
+						}
+						else {
+							JOptionPane.showMessageDialog(null, "- El kilometraje es 30 o menor","Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
+						}
+						
+					} catch (Exception ex) {
+						JOptionPane.showMessageDialog(null, "- Ingresó un valor no valido","Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
+					}
+					
+				}
+				
+			}
+			
+			//Proceso de refrescado del JList.
+			DefaultListModel listAutomovilesSeleccionar = new DefaultListModel(); //Se crea un objeto de tipo DefaultListModel.
+			
+			for (int i = 0; i < automovilesIngresados.size(); i++) { //Aca se recorre la lista de automoviles.
+				listAutomovilesSeleccionar.addElement(automovilesIngresados.get(i).toString()); //Aca se añaden los automoviles al JList.
+			}
+			listAutomoviles.setModel(listAutomovilesSeleccionar); //Aca se añaden todos los textos al componente JList.
+					
+		} catch (Exception ex) {
+			if (textFieldModificar.getText().equals("")) {
+				JOptionPane.showMessageDialog(null, "- No hay nada escrito en el JTextField \n- No seleccionó ningún automóvil ", "Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "- No seleccionó ningún automóvil", "Error de validación", JOptionPane.WARNING_MESSAGE); //El primer parametro siempre debe ser null para que el mensaje se centre, en el segundo parametro va el mensaje a mostrar,en el tercer parametro va el titulo de la ventana y en el cuarto parametro va el tipo de error.
 			}
 		}
-		
+	}	
 }
 
