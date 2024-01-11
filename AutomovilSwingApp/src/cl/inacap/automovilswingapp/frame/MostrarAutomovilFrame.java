@@ -64,8 +64,6 @@ public class MostrarAutomovilFrame extends JInternalFrame { //Esta clase hereda 
 		btnFiltrar.addActionListener(this::filtrarAutomoviles); //Aca se añade el Listener del JButton llamado (Filtrar) el cual llama al método llamado filtrarAutomoviles().
 		btnFiltrar.setBounds(585, 10, 89, 23);
 		getContentPane().add(btnFiltrar);
-		
-
 	}
 	
 	//Proceso de muestreo con filtros (El filtro se hace en la campa dao, aca solo se muestran).

@@ -59,7 +59,6 @@ public class EliminarAutomovilFrame extends JInternalFrame {
 		JLabel lblSeleccioneAutomovilA = new JLabel("Seleccione Automovil a Eliminar");
 		lblSeleccioneAutomovilA.setBounds(243, 50, 211, 14);
 		getContentPane().add(lblSeleccioneAutomovilA);
-
 	}
 
 	//Codigo a ejecutar cuando se pulsa el boton Eliminar.

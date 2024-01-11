@@ -26,7 +26,7 @@ import javax.swing.ListSelectionModel;
 public class IngresarAutomovilFrame extends JInternalFrame { //Esta clase hereda de JInternalFrame (Son los Frames que se muestran cuando se ejecuta el codigo de los JMenuItem).
 	private JTextField textFieldPatente;
 	private JTextField textFieldNombreDeContacto;
-	private JComboBox <String> comboBoxTipoDeAtencion; //A los JComboBox siempre hay que asignarles el tipo de dato que van a mostrar, y al momento de crear el objeto deben tener un <>.
+	private JComboBox<String> comboBoxTipoDeAtencion; //A los JComboBox siempre hay que asignarles el tipo de dato que van a mostrar, y al momento de crear el objeto deben tener un <>.
 	private JSpinner spinnerKilometraje;
 	private JList listTipoDeMotor;
 
